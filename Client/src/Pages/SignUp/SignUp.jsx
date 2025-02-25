@@ -19,22 +19,28 @@ const SignUp = () => {
                 mobile
             });
             console.log(res.data);
-            navigate("/"); 
-
+            navigate("/");
         } catch (err) {
             console.error(err.message);
         }
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
-                <form onSubmit={handleOnSignUp} className="space-y-4">
+        <div className="flex items-center justify-center min-h-screen bg-[#E7F6F2] p-4 sm:p-6">
+            <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 md:p-10 w-full max-w-sm sm:max-w-md md:max-w-lg flex flex-col items-center">
+
+                {/* SignUp Logo */}
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-4 border-[#26A69A] flex items-center justify-center shadow-lg mb-4 bg-white">
+                    <img src="/login.png" alt="SignUp Logo" className="w-8 h-8 sm:w-10 sm:h-10" />
+                </div>
+
+                <h2 className="text-xl sm:text-2xl font-bold text-center text-[#2D2D2D] mb-4">Sign Up</h2>
+
+                <form onSubmit={handleOnSignUp} className="w-full space-y-4">
                     <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Name:</label>
+                        <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-1">User Name:</label>
                         <input
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border border-gray-300 bg-white text-gray-700 rounded-lg px-4 py-2 sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#52B788]"
                             type="text"
                             required
                             value={username}
@@ -42,9 +48,9 @@ const SignUp = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Email:</label>
+                        <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-1">Email:</label>
                         <input
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border border-gray-300 bg-white text-gray-700 rounded-lg px-4 py-2 sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#52B788]"
                             type="email"
                             required
                             value={email}
@@ -52,9 +58,9 @@ const SignUp = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Mobile:</label>
+                        <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-1">Mobile:</label>
                         <input
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border border-gray-300 bg-white text-gray-700 rounded-lg px-4 py-2 sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#52B788]"
                             type="tel"
                             required
                             value={mobile}
@@ -64,9 +70,9 @@ const SignUp = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Password:</label>
+                        <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-1">Password:</label>
                         <input
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border border-gray-300 bg-white text-gray-700 rounded-lg px-4 py-2 sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#52B788]"
                             type="password"
                             required
                             value={password}
@@ -74,7 +80,7 @@ const SignUp = () => {
                         />
                     </div>
                     <button
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-300"
+                        className="w-full bg-[#26A69A] hover:bg-[#1E847F] text-white font-semibold py-2 sm:py-3 rounded-lg text-sm sm:text-lg transition duration-300"
                         type="submit"
                     >
                         Sign Up
@@ -82,10 +88,10 @@ const SignUp = () => {
                 </form>
 
                 {/* Login Link */}
-                <p className="text-center text-sm text-gray-600 mt-4">
+                <p className="text-center text-sm sm:text-base text-gray-600 mt-3">
                     Already have an account?{" "}
                     <span
-                        className="text-blue-500 hover:underline cursor-pointer"
+                        className="text-[#26A69A] hover:underline cursor-pointer"
                         onClick={() => navigate("/login")}
                     >
                         Login

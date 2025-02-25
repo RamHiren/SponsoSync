@@ -1,46 +1,98 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.jpg"; 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <nav className="bg-gray-900 shadow-md">
+    <nav className="bg-[#F0F2F5] shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <span className="text-xl font-semibold text-orange-700">MyBrand</span>
-          
-          <div className="hidden md:flex space-x-6 items-center mx-auto">
-            <NavLink to="/" className="text-white hover:text-blue-800">Home</NavLink>
-            <NavLink to="/newevent" className="text-white hover:text-blue-800">AddEvent</NavLink>
+          <div className="flex items-center space-x-2">
+          <img src={logo} alt="SponsoSync Logo" className="h-10 w-10" />
 
-            <NavLink to="/about" className="text-white hover:text-blue-800">About</NavLink>
-            <NavLink to="/services" className="text-white hover:text-blue-800">Services</NavLink>
-            <NavLink to="/contact" className="text-white hover:text-blue-800">Contact</NavLink>
+            <span className="text-xl font-semibold text-black">SponsoSync</span>
           </div>
-          
+
+          <div className="hidden md:flex space-x-6 items-center mx-auto">
+            <NavLink to="/" className="text-black font-medium hover:text-gray-600">
+              Home
+            </NavLink>
+            <NavLink to="/newevent" className="text-black font-medium hover:text-gray-600">
+              Add Event
+            </NavLink>
+            <NavLink to="/about" className="text-black font-medium hover:text-gray-600">
+              About
+            </NavLink>
+            <NavLink to="/services" className="text-black font-medium hover:text-gray-600">
+              Services
+            </NavLink>
+            <NavLink to="/contact" className="text-black font-medium hover:text-gray-600">
+              Contact
+            </NavLink>
+          </div>
+
           <div className="hidden md:flex space-x-4">
-            <NavLink to="/login" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800">Login</NavLink>
-            <NavLink to="/register" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800">Register</NavLink>
+            <NavLink
+              to="/login"
+              className="border-2 border-black bg-[#F0F2F5] text-black font-medium px-4 py-2 rounded-lg transition duration-300 hover:bg-black hover:text-white"
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="border-2 border-black bg-black text-white font-medium px-4 py-2 rounded-lg transition duration-300 hover:bg-[#F0F2F5] hover:text-black"
+            >
+              Register
+            </NavLink>
           </div>
-          
+
           <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-black">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
+
       {isOpen && (
-        <div className="md:hidden bg-gray-900 border-t shadow-md">
+        <div className="md:hidden bg-[#F0F2F5] border-t shadow-md">
           <div className="px-4 py-2 flex flex-col space-y-2">
-            <NavLink to="/" className="text-white hover:text-blue-800">Home</NavLink>
-            <NavLink to="/about" className="text-white hover:text-blue-800">About</NavLink>
-            <NavLink to="/services" className="text-white hover:text-blue-800">Services</NavLink>
-            <NavLink to="/contact" className="text-white hover:text-blue-800">Contact</NavLink>
-            <NavLink to="/login" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800">Login</NavLink>
-            <NavLink to="/register" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800">Register</NavLink>
+            <NavLink to="/" className="text-black font-medium hover:text-gray-600" onClick={handleNavClick}>
+              Home
+            </NavLink>
+            <NavLink to="/newevent" className="text-black font-medium hover:text-gray-600" onClick={handleNavClick}>
+              Add Event
+            </NavLink>
+            <NavLink to="/about" className="text-black font-medium hover:text-gray-600" onClick={handleNavClick}>
+              About
+            </NavLink>
+            <NavLink to="/services" className="text-black font-medium hover:text-gray-600" onClick={handleNavClick}>
+              Services
+            </NavLink>
+            <NavLink to="/contact" className="text-black font-medium hover:text-gray-600" onClick={handleNavClick}>
+              Contact
+            </NavLink>
+            <NavLink
+              to="/login"
+              className="border-2 border-black bg-[#F0F2F5] text-black font-medium px-4 py-2 rounded-lg transition duration-300 hover:bg-black hover:text-white"
+              onClick={handleNavClick}
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="border-2 border-black bg-black text-white font-medium px-4 py-2 rounded-lg transition duration-300 hover:bg-[#F0F2F5] hover:text-black"
+              onClick={handleNavClick}
+            >
+              Register
+            </NavLink>
           </div>
         </div>
       )}

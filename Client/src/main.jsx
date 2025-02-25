@@ -10,8 +10,12 @@ import {
 } from "react-router-dom";
 import Layout from './Layout.jsx'
 import Home from './Pages/Home.jsx';
-import SignUp from './Pages/SignUp.jsx';
-import Login from './Pages/Login.jsx';
+import SignUp from './Pages/SignUp/SignUp.jsx';
+import Login from './Pages/Login/Login.jsx';
+import AddSponser from './Pages/Sponser/AddSponser.jsx';
+import MySponser from './Pages/Sponser/MySponser.jsx';
+import SecondHome from './Pages/SecondHome/Home.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +23,9 @@ const router = createBrowserRouter(
       <Route path='' element={<Home />} />
       <Route path='register' element={<SignUp />} />
       <Route path='login' element={<Login />} />
-      
+      <Route path='sponser' element={<AddSponser />} />
+      <Route path='/mySponserShip' element={<MySponser />} />
+      <Route path='/home' element={<SecondHome />}/>
     </Route>
   )
 )
