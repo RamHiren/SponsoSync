@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../Model/event');
-const { generateToken ,jwtAuthMiddleware } = require('../jwt');
+const { generateToken ,jwtAuthMiddleware } = require('../middleware/jwt');
 
 router.post('/new',jwtAuthMiddleware,async(req,res)=>{
     try{

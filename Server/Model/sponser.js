@@ -14,11 +14,12 @@ const sponserSchema = new Schema({
         
     },
     
-    location:{
-        type: [String],
-        required: true,
-        
+    location: {
+        city: { type: String, required: true },
+        state: { type: String, required: true },
+        country: { type: String, default: 'India' }
     },
+    
     
     type:{
         type: String,
@@ -26,8 +27,11 @@ const sponserSchema = new Schema({
     },
    
     SocialMedia: {
-        type: [String],
-        required: true,
+        intragram: { type: String,  },
+        facebook: { type: String, },
+        
+        
+        other: { type: String },
     },
    
     price: {
@@ -41,11 +45,11 @@ const sponserSchema = new Schema({
         min: 10,
     },
 
-    // createdBy: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User', // References the User model
-    //     required: true
-    // }
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // References the User model
+        required: true
+    }
 
 },{ timestamps: true });
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../Model/user');
-const { generateToken ,jwtAuthMiddleware } = require('../jwt');
+const { generateToken ,jwtAuthMiddleware } = require('../middleware/jwt');
 
 
 router.post('/signup' ,async(req,res)=>{
