@@ -2,22 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-
 const SponsorForm = () => {
     const [formData, setFormData] = useState({
         sponsername: '',
         email: '',
-        location: {
-            city: '',
-            state: '',
-            country: 'India',
-        },
+        location: { city: '', state: '', country: 'India' },
         type: '',
-        socialMedia: {
-            facebook: '',
-            instagram: '',
-            other: ''
-        },
+        socialMedia: { facebook: '', instagram: '', other: '' },
         price: '',
         minimalAudienceCount: ''
     });
@@ -25,37 +16,30 @@ const SponsorForm = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [userId, setUserId] = useState(null);
 
-    // Extract user ID from JWT token
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
             try {
                 const decoded = jwtDecode(token);
-                console.log("Decoded token id:", decoded.id); // For debugging purposes
-                setUserId(decoded.id); // Ensure your token contains userId
+                console.log("Decoded token id:", decoded.id);
+                setUserId(decoded.id);
             } catch (error) {
                 console.error("Invalid token", error);
             }
         }
-    });
+    }, []); // Added dependency array to run only once on mount
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name.includes("location.")) {
-            const field = name.split(".")[1];
-            setFormData((prev) => ({
-                ...prev,
-                location: { ...prev.location, [field]: value },
-            }));
-        } else if (name.includes("socialMedia.")) {
-            const field = name.split(".")[1];
-            setFormData((prev) => ({
-                ...prev,
-                socialMedia: { ...prev.socialMedia, [field]: value },
-            }));
-        } else {
-            setFormData({ ...formData, [name]: value });
-        }
+        setFormData((prev) => {
+            if (name.includes("location.")) {
+                return { ...prev, location: { ...prev.location, [name.split(".")[1]]: value } };
+            }
+            if (name.includes("socialMedia.")) {
+                return { ...prev, socialMedia: { ...prev.socialMedia, [name.split(".")[1]]: value } };
+            }
+            return { ...prev, [name]: value };
+        });
     };
 
     const validateSocialMediaLinks = () => {
@@ -77,11 +61,14 @@ const SponsorForm = () => {
             return;
         }
 
+        const token = localStorage.getItem("token"); // Get token here
+
         try {
-            const res = await axios.post("http://localhost:3000/sponser/new", {
-                ...formData,
-                createdBy: userId
-            });
+            const res = await axios.post(
+                "http://localhost:3000/sponser/new",
+                { ...formData, createdBy: userId },
+                { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } }
+            );
 
             console.log("Response Data:", res.data);
             setFormData({
@@ -93,7 +80,6 @@ const SponsorForm = () => {
                 price: '',
                 minimalAudienceCount: ''
             });
-
         } catch (err) {
             console.error(err);
             setErrorMessage(err.response?.data?.message || "An error occurred. Please try again.");

@@ -15,6 +15,10 @@ import Login from './Pages/Login/Login.jsx';
 import AddSponser from './Pages/Sponser/AddSponser.jsx';
 import MySponser from './Pages/Sponser/MySponser.jsx';
 import SecondHome from './Pages/SecondHome/Home.jsx'
+import AddEvent from './Pages/Event/AddEvent.jsx';
+import AdminLogin from './Pages/Admin/Login/Login.jsx';
+import AdminSignUp from './Pages/Admin/SignUp/SignUp.jsx';
+import AdminHome from './Pages/Admin/Home/Home.jsx';
 
 
 const router = createBrowserRouter(
@@ -26,6 +30,11 @@ const router = createBrowserRouter(
       <Route path='sponser' element={<AddSponser />} />
       <Route path='/mySponserShip' element={<MySponser />} />
       <Route path='/home' element={<SecondHome />}/>
+      <Route path='/addevent' element={<AddEvent />}/>
+      <Route path='/auth/register' element={<AdminSignUp />}/>
+      <Route path='/auth/login' element={<AdminLogin />}/>
+      <Route path='/auth/admin/home' element={<AdminHome />}/>
+
     </Route>
   )
 )
