@@ -103,3 +103,16 @@
 // };
 
 // export default Event;
+
+
+import React from 'react'
+
+const Event = () => {
+  return (
+    <div>
+      Hello i am events
+    </div>
+  )
+}
+
+export default Event
