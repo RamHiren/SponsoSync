@@ -22,6 +22,9 @@ app.use('/event', eventRoutes);
 const sponserRoutes = require('./Routes/sponserRoutes');
 app.use('/sponser', sponserRoutes);
 
+const AdminRoutes = require('./Routes/adminRoutes');
+app.use('/admin', AdminRoutes);
+
 app.listen(3000,()=>{
     console.log('Server is running on port 3000');
 })

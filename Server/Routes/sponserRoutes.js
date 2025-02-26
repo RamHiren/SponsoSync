@@ -4,7 +4,7 @@ const Sponser = require('../Model/sponser');
 const { generateToken ,jwtAuthMiddleware } = require('../middleware/jwt');
 const { isSponserOwner } = require('../middleware/auth');
 
-router.post('/new',async(req,res)=>{
+router.post('/new',jwtAuthMiddleware,async(req,res)=>{
     try{
         const data = req.body;
         const newSponser = new Sponser(data);

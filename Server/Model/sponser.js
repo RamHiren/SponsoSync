@@ -49,6 +49,12 @@ const sponserSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // References the User model
         required: true
+    },
+
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 
 },{ timestamps: true });
