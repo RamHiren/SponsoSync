@@ -3,11 +3,11 @@ const router = express.Router();
 const User = require('../Model/user');
 const { generateToken, jwtAuthMiddleware } = require('../middleware/jwt');
 const nodemailer = require('nodemailer');
-const AWS = require('aws-sdk');
+
 const dotenv = require('dotenv');
 dotenv.config();
 
-const dynamoDB = new AWS.DynamoDB.DocumentClient();
+
 // Configure nodemailer transporter
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -22,24 +22,14 @@ const generateOTP = () => {
     return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-// Store OTPs temporarily (in production, use a database or cache like Redis)
 const otpStore = {};
-// const saveToDynamoDB = async (data) => {
-//     const params = {
-//         TableName: 'user', // Your DynamoDB table name
-//         Item: data
-//     };
-//     await dynamoDB.put(params).promise();
-// };
+
 router.post('/signup', async (req, res) => {
     try {
         const data = req.body;
         const newUser = new User(data);
         const savedUser = await newUser.save()
-        console.log("Data saved Successfully");
-        // await saveToDynamoDB(savedUser.toObject());
-        // console.log("Data saved to DynamoDB successfully");
-        // assign jwt token
+        
         const payload = {
             id: savedUser.id,
             username: savedUser.username
