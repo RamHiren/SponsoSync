@@ -22,8 +22,18 @@ const eventSchema = new Schema(
     offers: { type: [String], default: [] },
     eventOrganizer: { type: String, required: true },
     audienceCount: { type: Number, required: true, min: 10 },
+    imageUrl: { type: String, required: true },
+    isVerified : { type: Boolean, default: false },
+    createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User', // References the User model
+            required: true
+        },
+    approvedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "Sponser" }]
+      
     
   },
+  
   { timestamps: true }
 );
 

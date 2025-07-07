@@ -21,7 +21,7 @@ const sponserSchema = new Schema({
     },
     
     
-    type:{
+    sponsertype:{
         type: String,
         required: true,
     },
@@ -55,7 +55,17 @@ const sponserSchema = new Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    interested: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Event', 
+        default: []
+    },
+    logoUrl: {
+        type: String,
+        required: true
+    },
+    approved: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }]
 
 },{ timestamps: true });
 

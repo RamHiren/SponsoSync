@@ -23,7 +23,12 @@ const userSchema = new Schema({
     password:{
         type: String,
         required: true,
-    }
+    },
+
+    credits:{
+        type: Number,
+        default: 10
+    },
 
 },{ timestamps: true });
 

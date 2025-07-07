@@ -19,12 +19,17 @@ app.use('/user', userRoutes);
 const eventRoutes = require('./Routes/eventRoutes');
 app.use('/event', eventRoutes);
 
-const sponserRoutes = require('./Routes/sponserRoutes');
-app.use('/sponser', sponserRoutes);
+const sponserRotes = require('./Routes/sponserRoutes');
+app.use('/sponser', sponserRotes);
 
-const AdminRoutes = require('./Routes/adminRoutes');
-app.use('/admin', AdminRoutes);
+const adminRoutes = require('./Routes/adminRoutes');
+app.use('/admin', adminRoutes);
 
-app.listen(3000,()=>{
+const geminiapiRoutes = require('./Routes/geminiapiRoutes');
+app.use('/gemini', geminiapiRoutes);
+
+app.listen(process.env.PORT || 3000,()=>{
     console.log('Server is running on port 3000');
 })
+
+    

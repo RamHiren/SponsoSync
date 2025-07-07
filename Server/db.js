@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const DB_URL = process.env.DB_URL
+const DB_URL = process.env.DB_URL;
 
 
-// const mongoURL = DB_URL;
-const mongoURL = 'mongodb://127.0.0.1:27017/SponsoSync'; //true
+const mongoURL = DB_URL;
+// const mongoURL = 'mongodb://127.0.0.1:27017/SponsoSync'; //true
 
 
 mongoose.connect(mongoURL,{
