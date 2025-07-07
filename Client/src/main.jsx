@@ -22,7 +22,7 @@ import AdminHome from './Pages/Admin/Home/Home.jsx';
 import { ResetPassword } from './Pages/Login/ReserPassword.jsx';
 import { ForgotPassword } from './Pages/Login/ForgetPassword.jsx';
 import AddEventPage from './Pages/Event/AddEvent.jsx';
-import Services from './Pages/services/services.jsx';
+import Services from "./Pages/Services/Services.jsx" 
 import About from './Pages/About/About.jsx';
 import Contactus from './Pages/ContactUs/ContactUs.jsx';
 
