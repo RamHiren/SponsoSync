@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+    import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -22,15 +23,20 @@ const Login = () => {
             console.log("Token:", res.data.token);
 
             localStorage.setItem("token", res.data.token);
-            navigate("/auth/admin/home");
+            toast.success("Login successful! Redirecting...", {
+                duration: 2000, // 2 seconds
+              });
+              setTimeout(() => {
+                navigate("/auth/admin/home");
+              }, 1000);
 
         } catch (err) {
             console.error(err);
 
             if (err.response && err.response.data && err.response.data.message) {
-                setErrorMessage(err.response.data.message);
+                toast.error(err.response.data.message);
             } else {
-                setErrorMessage("Invalid credentials. Please try again.");
+                toast.error("Invalid credentials. Please try again.");
             }
         }
     };
@@ -91,6 +97,22 @@ const Login = () => {
                     </span>
                 </p>
             </div>
+            <Toaster richColors 
+            position="top-center"
+            closeButton
+            toastOptions={{
+                style: {             
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  borderRadius: "12px",
+                  padding: "14px 24px",
+                  display: "flex",
+                    justifyContent: "space-between",
+                alignItems: "center",
+                },
+              }}
+            />
+
         </div>
     );
 };
