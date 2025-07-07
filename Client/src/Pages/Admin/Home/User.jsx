@@ -9,7 +9,7 @@ const User = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3000/user", {
+        const response = await fetch("https://sponsosync-backend.onrender.com/user", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

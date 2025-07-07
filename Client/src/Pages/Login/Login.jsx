@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/user/login", {
+      const res = await axios.post("https://sponsosync-backend.onrender.com/user/login", {
         username,
         password,
       });
@@ -43,20 +43,20 @@ const Login = () => {
 
     try {
       if (step === 1) {
-        await axios.post("http://localhost:3000/user/forgot-password", {
+        await axios.post("https://sponsosync-backend.onrender.com/user/forgot-password", {
           email,
         });
         toast.success("OTP sent to your email.");
         setStep(2);
       } else if (step === 2) {
-        await axios.post("http://localhost:3000/user/verify-otp", {
+        await axios.post("https://sponsosync-backend.onrender.com/user/verify-otp", {
           email,
           otp,
         });
         toast.success("OTP verified. Enter new password.");
         setStep(3);
       } else if (step === 3) {
-        await axios.post("http://localhost:3000/user/reset-password", {
+        await axios.post("https://sponsosync-backend.onrender.com/user/reset-password", {
           email,
           newPassword,
         });

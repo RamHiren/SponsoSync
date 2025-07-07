@@ -16,7 +16,7 @@ const Sponser = () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found. Please log in.");
 
-      const response = await axios.get("http://localhost:3000/admin/sponser", {
+      const response = await axios.get("https://sponsosync-backend.onrender.com/admin/sponser", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -33,7 +33,7 @@ const Sponser = () => {
       const token = localStorage.getItem("token");
 
       // Fetch sponsor details by ID
-      const sponsorResponse = await axios.get(`http://localhost:3000/admin/sponser/${id}`, {
+      const sponsorResponse = await axios.get(`https://sponsosync-backend.onrender.com/admin/sponser/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -42,14 +42,14 @@ const Sponser = () => {
 
       // Update sponsor verification status
       await axios.put(
-        `http://localhost:3000/admin/sponser/${id}`,
+        `https://sponsosync-backend.onrender.com/admin/sponser/${id}`,
         { isVerified: true },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       // Send verification email via backend API
       await axios.post(
-        'http://localhost:3000/admin/sponser/send-verification-email',
+        'https://sponsosync-backend.onrender.com/admin/sponser/send-verification-email',
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -69,7 +69,7 @@ const Sponser = () => {
       const token = localStorage.getItem("token");
   
       // Fetch sponsor details by ID
-      const sponsorResponse = await axios.get(`http://localhost:3000/admin/sponser/${id}`, {
+      const sponsorResponse = await axios.get(`https://sponsosync-backend.onrender.com/admin/sponser/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
@@ -78,13 +78,13 @@ const Sponser = () => {
   
       // Send deletion confirmation email via backend API
       await axios.post(
-        'http://localhost:3000/admin/sponser/send-deletion-email',
+        'https://sponsosync-backend.onrender.com/admin/sponser/send-deletion-email',
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
   
       // Delete the sponsor
-      await axios.delete(`http://localhost:3000/admin/sponser/${id}`, {
+      await axios.delete(`https://sponsosync-backend.onrender.com/admin/sponser/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   

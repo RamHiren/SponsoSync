@@ -14,7 +14,7 @@ const Login = () => {
         setErrorMessage("");
 
         try {
-            const res = await axios.post("http://localhost:3000/admin/login", {
+            const res = await axios.post("https://sponsosync-backend.onrender.com/admin/login", {
                 username,
                 password,
             });

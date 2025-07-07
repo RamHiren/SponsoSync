@@ -17,7 +17,7 @@ const Event = () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found. Please log in.");
 
-      const response = await axios.get("http://localhost:3000/admin/events", {
+      const response = await axios.get("https://sponsosync-backend.onrender.com/admin/events", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -34,7 +34,7 @@ const Event = () => {
       const token = localStorage.getItem("token");
   
       // Fetch event details by ID
-      const eventResponse = await axios.get(`http://localhost:3000/admin/events/${id}`, {
+      const eventResponse = await axios.get(`https://sponsosync-backend.onrender.com/admin/events/${id}`, {
         headers: { Authorization: `Bearer ${token}`},
       });
   
@@ -43,14 +43,14 @@ const Event = () => {
   
       // Update event verification status
       await axios.put(
-        `http://localhost:3000/admin/events/${id}`,
+        `https://sponsosync-backend.onrender.com/admin/events/${id}`,
         { isVerified: true },
         { headers: { Authorization: `Bearer ${token}` } }
       );
   
       // Send verification email via backend API
       await axios.post(
-        'http://localhost:3000/admin/events/send-verification-email',
+        'https://sponsosync-backend.onrender.com/admin/events/send-verification-email',
         { email: userEmail, eventName: event.eventname },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -69,7 +69,7 @@ const Event = () => {
       const token = localStorage.getItem("token");
   
       // Fetch event details by ID
-      const eventResponse = await axios.get(`http://localhost:3000/admin/events/${id}`, {
+      const eventResponse = await axios.get(`https://sponsosync-backend.onrender.com/admin/events/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
@@ -79,13 +79,13 @@ const Event = () => {
 
       // Send deletion confirmation email via backend API
       await axios.post(
-        'http://localhost:3000/admin/events/send-deletion-email',
+        'https://sponsosync-backend.onrender.com/admin/events/send-deletion-email',
         { email: userEmail, eventName: event.eventname },
         { headers: { Authorization: `Bearer ${token}` } }
       );
   
       // Delete the event
-      await axios.delete(`http://localhost:3000/admin/events/${id}`, {
+      await axios.delete(`https://sponsosync-backend.onrender.com/admin/events/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   

@@ -94,7 +94,7 @@ const AddEventPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:3000/gemini/enhance",
+        "https://sponsosync-backend.onrender.com/gemini/enhance",
         { prompt },
         {
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -127,7 +127,7 @@ const AddEventPage = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:3000/event/new", eventData, {
+      await axios.post("https://sponsosync-backend.onrender.com/event/new", eventData, {
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       });
       toast.success("Event added successfully! Please For Verify Your Event", { duration: 2000 });

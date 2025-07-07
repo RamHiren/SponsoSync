@@ -13,7 +13,7 @@ const UserDetail = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/user/${userId}`, {
+        const response = await fetch(`https://sponsosync-backend.onrender.com/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -45,7 +45,7 @@ const UserDetail = () => {
 
     setIsUpdating(true);
     try {
-      const response = await fetch(`http://localhost:3000/user/${userId}/credits`, {
+      const response = await fetch(`https://sponsosync-backend.onrender.com/user/${userId}/credits`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

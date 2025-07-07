@@ -36,7 +36,7 @@ const SponsorDetailsPage = () => {
 
         // Fetch sponsor details
         const sponsorResponse = await axios.get(
-          `http://localhost:3000/sponser/${sponserId}`,
+          `https://sponsosync-backend.onrender.com/sponser/${sponserId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -54,7 +54,7 @@ const SponsorDetailsPage = () => {
 
         // Fetch events
         const eventsResponse = await axios.get(
-          "http://localhost:3000/event/myevents",
+          "https://sponsosync-backend.onrender.com/event/myevents",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -97,7 +97,7 @@ const SponsorDetailsPage = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:3000/sponser/${sponserId}/apply`,
+        `https://sponsosync-backend.onrender.com/sponser/${sponserId}/apply`,
         { eventId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

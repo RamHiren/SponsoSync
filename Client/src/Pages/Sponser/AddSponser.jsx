@@ -101,7 +101,7 @@ const SponsorForm = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:3000/sponser/new",
+        "https://sponsosync-backend.onrender.com/sponser/new",
         { ...formData, createdBy: userId },
         { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } }
       );

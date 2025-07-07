@@ -50,7 +50,7 @@ const MySponser = () => {
       }
 
       const response = await axios.get(
-        "http://localhost:3000/sponser/admin/mysponserslist",
+        "https://sponsosync-backend.onrender.com/sponser/admin/mysponserslist",
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -60,7 +60,7 @@ const MySponser = () => {
             sponsor.interested.map(async (eventId) => {
               try {
                 const eventRes = await axios.get(
-                  `http://localhost:3000/event/${eventId}`,
+                  `https://sponsosync-backend.onrender.com/event/${eventId}`,
                   { headers: { Authorization: `Bearer ${token}` } }
                 );
                 return eventRes.data;
@@ -87,7 +87,7 @@ const MySponser = () => {
     if (!window.confirm("Are you sure you want to delete this sponsor?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3000/sponser/admin/delete/${id}`, {
+      await axios.delete(`https://sponsosync-backend.onrender.com/sponser/admin/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSponsors((prev) => prev.filter((sponsor) => sponsor._id !== id));
@@ -126,7 +126,7 @@ const MySponser = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3000/sponser/admin/update/${editingSponsor}`,
+        `https://sponsosync-backend.onrender.com/sponser/admin/update/${editingSponsor}`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -180,7 +180,7 @@ const MySponser = () => {
   
       // Update sponsor's approved field with event ID
       await axios.put(
-        `http://localhost:3000/sponser/${sponsorId}/approve`,
+        `https://sponsosync-backend.onrender.com/sponser/${sponsorId}/approve`,
         { eventId: event.event._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -190,7 +190,7 @@ const MySponser = () => {
       let email;
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/${userId}`,
+          `https://sponsosync-backend.onrender.com/user/${userId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         email = response.data.user.email;
@@ -201,7 +201,7 @@ const MySponser = () => {
   
       // Update the event's approvedBy field with the sponsor ID and email
       await axios.put(
-        `http://localhost:3000/event/${event.event._id}/approve`,
+        `https://sponsosync-backend.onrender.com/event/${event.event._id}/approve`,
         { sponserId: sponsorId, email },
         { headers: { Authorization: `Bearer ${token}` } }
       );

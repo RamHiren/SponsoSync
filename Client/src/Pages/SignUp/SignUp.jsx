@@ -17,7 +17,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/user/signup", {
+      const res = await axios.post("https://sponsosync-backend.onrender.com/user/signup", {
         username,
         password,
         email,

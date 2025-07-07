@@ -31,7 +31,7 @@ const HomePage = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:3000/sponser", {
+        const response = await axios.get("https://sponsosync-backend.onrender.com/sponser", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

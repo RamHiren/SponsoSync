@@ -35,7 +35,7 @@ export default function Navbar() {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken.id;
       
-      const response = await fetch(`http://localhost:3000/user/${userId}`, {
+      const response = await fetch(`https://sponsosync-backend.onrender.com/user/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -60,13 +60,13 @@ export default function Navbar() {
     
     try {
       // Fetch recent events (last 5)
-      const eventsResponse = await fetch('http://localhost:3000/event/recent', {
+      const eventsResponse = await fetch('https://sponsosync-backend.onrender.com/event/recent', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const eventsData = await eventsResponse.json();
       
       // Fetch recent sponsors (last 5)
-      const sponsorsResponse = await fetch('http://localhost:3000/sponser/recent', {
+      const sponsorsResponse = await fetch('https://sponsosync-backend.onrender.com/sponser/recent', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const sponsorsData = await sponsorsResponse.json();
