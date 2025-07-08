@@ -53,7 +53,7 @@ const router = createBrowserRouter(
       <Route path='/contactus' element={<Contactus />}/>
       <Route path="/user/:userId" element={<UserDetail />} />
       {/* <Route path="/profile" element={<Profile />} /> */}
-      <Route path="https://sponsosync-backend.onrender.com/:sponserId" element={<SponsorDetailsPage />} />
+      <Route path="/sponser/:sponserId" element={<SponsorDetailsPage />} />
       {/* <Route path="/sponsers/:sponserId" element={<SponsorDetails />} /> */}
 
 
